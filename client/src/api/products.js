@@ -1,5 +1,5 @@
 import axios from 'axios';
-const URL = 'http://localhost:5000';
+const URL = 'https://e-shop-api.herokuapp.com/';
 
 export const getProducts = async () => {
     try {

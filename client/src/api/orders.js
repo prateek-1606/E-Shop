@@ -1,4 +1,4 @@
-const URL = "http://localhost:5000/order";
+const URL = "https://e-shop-api.herokuapp.com/order";
 const axios = require('axios');
 
 export const getOrders = async () => {

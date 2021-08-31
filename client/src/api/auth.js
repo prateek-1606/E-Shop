@@ -1,5 +1,5 @@
 import axios from 'axios';
-const URL = 'http://localhost:5000/auth'
+const URL = 'https://e-shop-api.herokuapp.com/auth'
 
 export const login = async ({ email, password }) => {
     try {

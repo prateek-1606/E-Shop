@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { NavLink, useHistory } from "react-router-dom";
-import "./Navbar.css";
 import useStyles from './styles';
 import logo from '../../assests/commerce.png';
 import { IconButton, Badge } from "@material-ui/core";
