@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useHistory } from 'react-router';
 import { Grid } from '@material-ui/core';
 import Product from './Product/Product';

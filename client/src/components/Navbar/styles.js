@@ -1,5 +1,4 @@
 import { makeStyles, fade } from '@material-ui/core/styles';
-import { Autorenew } from '@material-ui/icons';
 
 const drawerWidth = 0;
 
@@ -90,8 +89,4 @@ export default makeStyles((theme) => ({
     fontSize: "16px",
 
   },
-  menuButton: {
-    marginRight: theme.spacing(2),
-
-  }
 }));

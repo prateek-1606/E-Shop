@@ -1,4 +1,3 @@
-import { ContactlessOutlined } from '@material-ui/icons';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { getOrder } from '../../api/orders';
@@ -13,7 +12,7 @@ const OrderDetails = () => {
                 .then((res) => SetOrder(res.data))
                 .catch(err => console.log(err))
         }
-    }, [])
+    }, [params.id])
 
     if (order === null) return null;
 

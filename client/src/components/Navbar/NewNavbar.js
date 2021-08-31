@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import useStyles from './styles';
 import logo from '../../assests/commerce.png';
@@ -20,7 +20,7 @@ const Navbar = ({ totalItems }) => {
             <>
                 <li class="luxbar-item"><a href="/">Shop</a></li>
                 <li class="luxbar-item"><a href="/myorders">History</a></li>
-                <li class="luxbar-item"><a onClick={handlelogout} >Logout</a></li>
+                <li class="luxbar-item"><a onClick={handlelogout} href="/" >Logout</a></li>
             </>
         )
     }

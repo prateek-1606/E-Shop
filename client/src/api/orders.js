@@ -17,7 +17,7 @@ export const AddOrder = async ({ cart, OrderID, address }) => {
         const { token } = JSON.parse(localStorage.getItem('user'));
         const res = await axios.post(`${URL}`, { cart, OrderID, address }, { headers: { "Authorization": `${token}` } });
 
-        return
+        return res;
     }
     catch (err) {
         throw err;
