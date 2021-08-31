@@ -90,10 +90,10 @@ const App = () => {
                     <Route exact path="/signup" >
                         <Signup />
                     </Route>
-                    <Route exact path="/myorders" >
+                    <Route exact path="/history" >
                         <History />
                     </Route>
-                    <Route exact path="/myorders/:id" >
+                    <Route exact path="/history/:id" >
                         <OrderDetails />
                     </Route>
                     <Route exact path="/">

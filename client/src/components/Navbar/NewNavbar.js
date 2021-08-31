@@ -19,7 +19,7 @@ const Navbar = ({ totalItems }) => {
         return (
             <>
                 <li class="luxbar-item"><a href="/">Shop</a></li>
-                <li class="luxbar-item"><a href="/myorders">History</a></li>
+                <li class="luxbar-item"><a href="/history">History</a></li>
                 <li class="luxbar-item"><a onClick={handlelogout} href="/" >Logout</a></li>
             </>
         )
