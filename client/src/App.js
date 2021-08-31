@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import Products from './components/Products/Products';
-import Navbar from './components/Navbar/Navbar';
+import Navbar from './components/Navbar/NewNavbar';
 import Checkout from './components/CheckoutForm/Checkout/Checkout';
 import { commerce } from './lib/commerce';
 import Cart from './components/Cart/Cart';
+import SignIn from './components/Auth/Signin';
+import Signup from './components/Auth/Signup';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import History from './components/History/History';
+import OrderDetails from './components/History/OrderDetails';
 
 const App = () => {
     const [products, setproducts] = useState([]);
@@ -12,8 +16,18 @@ const App = () => {
     const [order, setOrder] = useState({});
     const [errorMessage, setErrorMessage] = useState('');
 
+
     const fetchProducts = async () => {
+        /*getProducts().then(({ data }) => {
+            setproducts(data);
+        })
+            .catch((err) => {
+                console.log(err);
+                setErrorMessage(err.message);
+            })*/
+
         const { data } = await commerce.products.list();
+        console.log(data);
         setproducts(data);
     }
 
@@ -70,6 +84,18 @@ const App = () => {
             <Router>
                 <Navbar totalItems={cart.total_items} />
                 <Switch>
+                    <Route exact path="/signin" >
+                        <SignIn />
+                    </Route>
+                    <Route exact path="/signup" >
+                        <Signup />
+                    </Route>
+                    <Route exact path="/history" >
+                        <History />
+                    </Route>
+                    <Route exact path="/history/:id" >
+                        <OrderDetails />
+                    </Route>
                     <Route exact path="/">
                         <Products products={products} handleAddToCart={handleAddToCart} />
                     </Route>

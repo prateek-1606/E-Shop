@@ -1,4 +1,5 @@
 import { makeStyles, fade } from '@material-ui/core/styles';
+import { Autorenew } from '@material-ui/icons';
 
 const drawerWidth = 0;
 
@@ -13,12 +14,14 @@ export default makeStyles((theme) => ({
   },
   title: {
     flexGrow: 1,
+    maxWidth: '200px',
     alignItems: 'center',
     display: 'flex',
     textDecoration: 'none',
   },
   image: {
-    marginRight: '10px',
+    marginLeft: "20px",
+    marginRight: '-10px',
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -65,4 +68,30 @@ export default makeStyles((theme) => ({
       width: '20ch',
     },
   },
+  button: {
+    marginRight: "40px"
+  },
+  loginbutton: {
+    marginRight: '20px',
+    fontSize: '16px'
+  },
+  buttons: {
+    marginLeft: "auto"
+  },
+  dialog: {
+    minWidth: 500,
+  },
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 250,
+  },
+  shopbutton: {
+    marginLeft: "20px",
+    fontSize: "16px",
+
+  },
+  menuButton: {
+    marginRight: theme.spacing(2),
+
+  }
 }));
