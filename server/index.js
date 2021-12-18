@@ -7,7 +7,12 @@ const ProductRoute = require('./routes/products');
 const OrderRoute = require('./routes/order');
 require('dotenv').config()
 
-app.use(cors());
+var corsOptions = {
+    origin: 'http://localhost:3000/',
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 const PORT = process.env.PORT || 5000;

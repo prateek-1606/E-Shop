@@ -1,11 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import useStyles from './styles';
 import logo from '../../assests/commerce.png';
 import { IconButton, Badge } from "@material-ui/core";
 import { ShoppingCart } from '@material-ui/icons';
+import SearchIcon from "@material-ui/icons/Search";
+import CloseIcon from "@material-ui/icons/Close";
+import './Navbar.css';
 
 const Navbar = ({ totalItems }) => {
+    const [filteredData, setFilteredData] = useState([]);
+    const [wordEntered, setWordEntered] = useState("");
+    const clearInput = () => {
+        setFilteredData([]);
+        setWordEntered("");
+    };
+
     const classes = useStyles();
     const user = JSON.parse(localStorage.getItem('user'));
     const history = useHistory();;
@@ -44,8 +54,38 @@ const Navbar = ({ totalItems }) => {
                     <li class="luxbar-header">
                         <img src={logo} alt="commerce.js" height="30px" className={classes.image} />
                         <a href="/" class="luxbar-brand"> Commerce.js</a>
-                        <label class="luxbar-hamburger luxbar-hamburger-doublespin"
+                        <label style={{ color: 'black' }} class="luxbar-hamburger luxbar-hamburger-doublespin"
                             id="luxbar-hamburger" for="luxbar-checkbox"> <span></span> </label>
+                    </li>
+                    <li style={{ marginRight: 'auto' }} >
+                        <div className="search">
+                            <div className="searchInputs">
+                                <input
+                                    type="text"
+                                    placeholder="Search..."
+                                    value={wordEntered}
+                                /* onChange={handleFilter} */
+                                />
+                                {/* <div className="searchIcon">
+                                    {filteredData.length === 0 ? (
+                                        <SearchIcon />
+                                    ) : (
+                                        <CloseIcon id="clearBtn" onClick={clearInput} />
+                                    )}
+                                </div> */}
+                            </div>
+                            {/* {filteredData.length != 0 && (
+                                <div className="dataResult">
+                                    {filteredData.slice(0, 15).map((value, key) => {
+                                        return (
+                                            <a className="dataItem" href={value.link} target="_blank">
+                                                <p>{value.title} </p>
+                                            </a>
+                                        );
+                                    })}
+                                </div>
+                            )} */}
+                        </div>
                     </li>
                     {user === null ? notloggedin() : loggedin()}
                     <li class="luxbar-item">

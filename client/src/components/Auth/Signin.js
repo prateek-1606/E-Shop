@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 const SignIn = () => {
     const [data, setData] = useState({ email: '', password: '' });
     const history = useHistory();
+    const [wait, setWait] = useState(false);
 
     const handleChange = (e) => {
         console.log(e.target.value);
@@ -17,8 +18,10 @@ const SignIn = () => {
     const handleSubmit = (e) => {
         console.log(data);
         e.preventDefault();
+        setWait(true);
         login(data).then((res) => {
             localStorage.setItem('user', JSON.stringify({ ...res?.data }));
+            setWait(false);
             history.push('/');
         })
     }
@@ -34,22 +37,23 @@ const SignIn = () => {
 
     return (
         <div className='signin'>
-            <div className='signin-title'><Typography variant="h4" color="secondary">Sign In</Typography> </div>
-            <form className='signin-form' onSubmit={handleSubmit} >
-                <label for="EmailId">Email id</label>
-                <input onChange={handleChange} type="email" id="email" name="email" placeholder="Your Email id.." ></input>
-                <br />
-                <br />
-                <label for="Password">Password</label>
-                <input onChange={handleChange} name="password" type="Password" id="Password"></input>
-                <br />
-                <br />
-                <input type="submit" value="Submit"></input>
-                <br />
-                <br />
-                <Link onClick={demouserlogin} ><Typography style={{ marginLeft: "125px" }} >Login as a demo user</Typography></Link>
+            <div className="signin-title" >
+                Login
+            </div>
+            <form className="form" onSubmit={handleSubmit} >
+                <input className="input" type="email" name="email" onChange={handleChange} placeholder="Email Address" />
+                <input className="input" type="password" name="password" onChange={handleChange} placeholder="Password" />
+                <input className="submit" type="submit" value={wait === true ? 'Please wait....' : 'Login'} />
             </form>
-        </div>
+            <div style={{ marginTop: '15px' }} >
+                <span style={{ fontSize: '16px' }} >
+                    Don't have an account?
+                </span>
+                <Link to="/signup" style={{ float: 'right', fontSize: '16px', color: '#363637' }} display="inline" >
+                    Create Account
+                </Link>
+            </div>
+        </div >
     )
 }
 
