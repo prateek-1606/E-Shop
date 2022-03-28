@@ -3,10 +3,16 @@ import { useHistory } from 'react-router';
 import './signin.css';
 import { Typography } from '@material-ui/core';
 import { register } from '../../api/auth';
+import { Link } from 'react-router-dom';
 
 const SignUp = () => {
     const [data, setData] = useState({ email: '', password: '', name: '' });
     const history = useHistory();
+    const [wait, setWait] = useState(false);
+    const [error, setError] = useState('');
+    if (localStorage.getItem('user')) {
+        history.push('/');
+    }
 
     const handleChange = (e) => {
         console.log(e.target.value);
@@ -14,34 +20,42 @@ const SignUp = () => {
     }
 
     const handleSubmit = (e) => {
-        console.log(data);
         e.preventDefault();
+        setWait(true);
+        console.log(data);
         register(data)
             .then((res) => {
                 localStorage.setItem('user', JSON.stringify({ ...res?.data }));
+                setWait(false);
                 history.push('/');
             })
-            .catch((err) => console.log(err))
+            .catch((err) => {
+                setError('Something Went Wrong,Try Again!!')
+                setWait(false);
+            })
     }
 
     return (
-        <div className='signup'>
-            <div className='signin-title'><Typography variant="h4" color="secondary">Sign Up</Typography> </div>
+        <div className='signin'>
+            <div className='signup-title'>Create Account</div>
             <form className='signin-form' onSubmit={handleSubmit} >
-                <label for="name">Name</label>
                 <input onChange={handleChange} type="name" id="name" name="name" placeholder="Your Name.." ></input>
                 <br />
-                <br />
-                <label for="EmailId">Email id</label>
                 <input onChange={handleChange} type="email" id="email" name="email" placeholder="Your Email id.." ></input>
                 <br />
+                <input onChange={handleChange} name="password" type="Password" placeholder="Your Password.." id="Password"></input>
                 <br />
-                <label for="Password">Password</label>
-                <input onChange={handleChange} name="password" type="Password" id="Password"></input>
-                <br />
-                <br />
-                <input type="submit" value="Submit"></input>
+                <input type="submit" value={wait === true ? 'Please wait...' : 'Create Account'} ></input>
+                {error != '' ? (<Typography color="secondary" style={{ textAlign: 'center', paddingTop: '5px', fontSize: '15px' }} >{error}</Typography>) : null}
             </form>
+            <div style={{ marginTop: '15px' }} >
+                <span style={{ fontSize: '16px' }} >
+                    Already have an account?
+                </span>
+                <Link to="/signin" style={{ float: 'right', fontSize: '16px', color: '#363637' }} display="inline" >
+                    Login to your Account
+                </Link>
+            </div>
         </div>
     )
 }
