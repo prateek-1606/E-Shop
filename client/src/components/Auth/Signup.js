@@ -9,6 +9,10 @@ const SignUp = () => {
     const [data, setData] = useState({ email: '', password: '', name: '' });
     const history = useHistory();
     const [wait, setWait] = useState(false);
+    const [error, setError] = useState('');
+    if (localStorage.getItem('user')) {
+        history.push('/');
+    }
 
     const handleChange = (e) => {
         console.log(e.target.value);
@@ -25,7 +29,10 @@ const SignUp = () => {
                 setWait(false);
                 history.push('/');
             })
-            .catch((err) => console.log(err))
+            .catch((err) => {
+                setError('Something Went Wrong,Try Again!!')
+                setWait(false);
+            })
     }
 
     return (
@@ -39,6 +46,7 @@ const SignUp = () => {
                 <input onChange={handleChange} name="password" type="Password" placeholder="Your Password.." id="Password"></input>
                 <br />
                 <input type="submit" value={wait === true ? 'Please wait...' : 'Create Account'} ></input>
+                {error != '' ? (<Typography color="secondary" style={{ textAlign: 'center', paddingTop: '5px', fontSize: '15px' }} >{error}</Typography>) : null}
             </form>
             <div style={{ marginTop: '15px' }} >
                 <span style={{ fontSize: '16px' }} >

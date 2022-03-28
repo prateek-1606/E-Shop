@@ -57,36 +57,6 @@ const Navbar = ({ totalItems }) => {
                         <label style={{ color: 'black' }} class="luxbar-hamburger luxbar-hamburger-doublespin"
                             id="luxbar-hamburger" for="luxbar-checkbox"> <span></span> </label>
                     </li>
-                    <li style={{ marginRight: 'auto' }} >
-                        <div className="search">
-                            <div className="searchInputs">
-                                <input
-                                    type="text"
-                                    placeholder="Search..."
-                                    value={wordEntered}
-                                /* onChange={handleFilter} */
-                                />
-                                {/* <div className="searchIcon">
-                                    {filteredData.length === 0 ? (
-                                        <SearchIcon />
-                                    ) : (
-                                        <CloseIcon id="clearBtn" onClick={clearInput} />
-                                    )}
-                                </div> */}
-                            </div>
-                            {/* {filteredData.length != 0 && (
-                                <div className="dataResult">
-                                    {filteredData.slice(0, 15).map((value, key) => {
-                                        return (
-                                            <a className="dataItem" href={value.link} target="_blank">
-                                                <p>{value.title} </p>
-                                            </a>
-                                        );
-                                    })}
-                                </div>
-                            )} */}
-                        </div>
-                    </li>
                     {user === null ? notloggedin() : loggedin()}
                     <li class="luxbar-item">
                         <IconButton component={NavLink} to='/cart' aria-label="Show cart items" color="inherit">
