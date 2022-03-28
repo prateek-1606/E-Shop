@@ -35,15 +35,6 @@ const SignIn = () => {
             })
     }
 
-    const demouserlogin = () => {
-        login({ email: "demo@gmail.com", password: "123456" })
-            .then((res) => {
-                localStorage.setItem('user', JSON.stringify({ ...res?.data }));
-                history.push('/');
-            })
-            .catch((err) => console.log(err))
-    }
-
     return (
         <div className='signin'>
             <div className="signin-title" >
@@ -53,7 +44,7 @@ const SignIn = () => {
                 <input className="input" type="email" name="email" onChange={handleChange} placeholder="Email Address" />
                 <input className="input" type="password" name="password" onChange={handleChange} placeholder="Password" />
                 <input className="submit" type="submit" value={wait === true ? 'Please wait....' : 'Login'} />
-                {error != '' ? (<Typography color="secondary" style={{ textAlign: 'center', paddingTop: '5px', fontSize: '15px' }} >{error}</Typography>) : null}
+                {error !== '' ? (<Typography color="secondary" style={{ textAlign: 'center', paddingTop: '5px', fontSize: '15px' }} >{error}</Typography>) : null}
             </form>
             <div style={{ marginTop: '15px' }} >
                 <span style={{ fontSize: '16px' }} >

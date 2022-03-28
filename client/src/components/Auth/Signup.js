@@ -46,7 +46,7 @@ const SignUp = () => {
                 <input onChange={handleChange} name="password" type="Password" placeholder="Your Password.." id="Password"></input>
                 <br />
                 <input type="submit" value={wait === true ? 'Please wait...' : 'Create Account'} ></input>
-                {error != '' ? (<Typography color="secondary" style={{ textAlign: 'center', paddingTop: '5px', fontSize: '15px' }} >{error}</Typography>) : null}
+                {error !== '' ? (<Typography color="secondary" style={{ textAlign: 'center', paddingTop: '5px', fontSize: '15px' }} >{error}</Typography>) : null}
             </form>
             <div style={{ marginTop: '15px' }} >
                 <span style={{ fontSize: '16px' }} >

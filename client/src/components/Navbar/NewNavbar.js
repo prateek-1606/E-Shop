@@ -1,20 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import useStyles from './styles';
 import logo from '../../assests/commerce.png';
 import { IconButton, Badge } from "@material-ui/core";
 import { ShoppingCart } from '@material-ui/icons';
-import SearchIcon from "@material-ui/icons/Search";
-import CloseIcon from "@material-ui/icons/Close";
+
 import './Navbar.css';
 
 const Navbar = ({ totalItems }) => {
-    const [filteredData, setFilteredData] = useState([]);
-    const [wordEntered, setWordEntered] = useState("");
-    const clearInput = () => {
-        setFilteredData([]);
-        setWordEntered("");
-    };
+    // const [filteredData, setFilteredData] = useState([]);
+    // const [wordEntered, setWordEntered] = useState("");
+    // const clearInput = () => {
+    //     setFilteredData([]);
+    //     setWordEntered("");
+    // };
 
     const classes = useStyles();
     const user = JSON.parse(localStorage.getItem('user'));
